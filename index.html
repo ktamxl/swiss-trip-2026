@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tam Family Switzerland Adventure 2026</title>
+  <style>
+    :root {
+      --red: #D32F2F;
+      --navy: #1A237E;
+      --gold: #F9A825;
+      --white: #FFFFFF;
+      --off-white: #F5F5F5;
+      --light-gray: #FAFAFA;
+      --dark: #212121;
+      --mid: #555;
+      --border: #E0E0E0;
+      --tag-green: #2E7D32;
+      --tag-green-bg: #E8F5E9;
+      --radius: 12px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--light-gray); color: var(--dark); line-height: 1.6; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0D1447 60%, #1A1A2E 100%);
+      color: white; text-align: center; padding: 80px 20px 60px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1400&q=80') center/cover no-repeat;
+      opacity: 0.25;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero-flag { font-size: 48px; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(26px, 5vw, 48px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+    .hero h2 { font-size: clamp(16px, 3vw, 24px); font-weight: 300; color: var(--gold); margin-bottom: 12px; }
+    .hero-routing { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; opacity: 0.85; flex-wrap: wrap; }
+    .hero-routing span { background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 20px; }
+    .hero-sub { margin-top: 14px; font-size: 13px; opacity: 0.6; }
+
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--border); box-shadow: 0 1px 8px rgba(0,0,0,0.06); overflow-x: auto; }
+    .nav-inner { display: flex; max-width: 960px; margin: 0 auto; padding: 0 16px; }
+    .nav a { display: block; padding: 12px 14px; text-decoration: none; color: var(--mid); font-size: 12px; font-weight: 600; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+    .nav a:hover { color: var(--red); border-bottom-color: var(--red); }
+
+    .section { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+    .section + .section { padding-top: 0; }
+    .section-header { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .section-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; margin-bottom: 20px; }
+    .card-title { font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+
+    .badge { display: inline-flex; align-items: center; gap: 4px; background: var(--tag-green-bg); color: var(--tag-green); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+
+    .traveler-groups { display: flex; flex-direction: column; gap: 12px; }
+    .group-block { background: var(--off-white); border-radius: var(--radius); padding: 14px 18px; border-left: 4px solid var(--red); }
+    .group-block h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .group-block p { font-size: 13px; color: var(--mid); }
+
+    .flight-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .flight-table th { background: var(--navy); color: white; padding: 8px 12px; text-align: left; font-size: 11px; letter-spacing: 0.5px; }
+    .flight-table th:first-child { border-radius: 8px 0 0 0; }
+    .flight-table th:last-child { border-radius: 0 8px 0 0; }
+    .flight-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .flight-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+    .flight-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+    .flight-table tr:nth-child(even) td { background: var(--off-white); }
+    .flight-no { font-weight: 700; color: var(--navy); }
+    .flight-date { color: var(--mid); font-size: 12px; }
+    .flight-note { color: #E65100; font-size: 12px; margin-top: 4px; display: block; }
+
+    .day-block { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 32px; overflow: hidden; }
+    .day-header { display: flex; align-items: center; gap: 14px; padding: 16px 24px; background: var(--navy); color: white; }
+    .day-num { background: var(--red); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+    .day-meta { flex: 1; }
+    .day-meta h3 { font-size: 17px; font-weight: 700; }
+    .day-meta p { font-size: 12px; opacity: 0.8; margin-top: 1px; }
+    .day-badge { font-size: 11px; background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 20px; }
+    .day-photo { width: 100%; height: 230px; object-fit: cover; display: block; }
+    .day-body { padding: 20px 24px; }
+    .day-subroute { font-size: 13px; color: var(--mid); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+    .activity-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .activity-list li { display: flex; gap: 12px; font-size: 14px; line-height: 1.5; }
+    .activity-icon { width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 2px; }
+    .activity-icon.blue { background: var(--navy); }
+    .activity-icon.gold { background: var(--gold); color: var(--dark); }
+    .activity-icon.green { background: #2E7D32; }
+    .activity-text strong { color: var(--dark); }
+    .activity-text span { color: var(--mid); font-size: 13px; }
+
+    .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
+    .tip-card { background: var(--off-white); border-radius: var(--radius); padding: 18px; border-top: 3px solid var(--red); }
+    .tip-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+    .tip-card p { font-size: 13px; color: var(--mid); }
+
+    footer { background: var(--navy); color: rgba(255,255,255,0.7); text-align: center; padding: 32px 20px; font-size: 13px; }
+    footer p:first-child { font-size: 18px; color: white; margin-bottom: 6px; font-weight: 700; }
+    footer p:last-child { margin-top: 8px; opacity: 0.5; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 50px 16px 40px; }
+      .day-header { padding: 12px 16px; gap: 10px; }
+      .day-num { width: 34px; height: 34px; font-size: 14px; }
+      .day-meta h3 { font-size: 15px; }
+      .day-body { padding: 16px; }
+      .card { padding: 16px; }
+      .nav-inner { padding: 0 8px; }
+      .nav a { padding: 10px 8px; font-size: 11px; }
+      .flight-table { font-size: 11px; }
+      .flight-table th, .flight-table td { padding: 7px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-flag">🇨🇭</div>
+  <h1>Tam Family Switzerland Adventure 2026</h1>
+  <h2>July 18 – 26, 2026 · 9 Days / 8 Nights</h2>
+  <div class="hero-routing">
+    <span>🏠 SFO / YVR / YYZ</span>
+    <span>✈️</span>
+    <span>🇨🇭 Zurich (ZRH) · Geneva (GVA)</span>
+    <span>✈️</span>
+    <span>🏠 Home</span>
+  </div>
+  <p class="hero-sub">Zurich · Lucerne · Bernese Oberland · Montreux · Zermatt · Geneva</p>
+</header>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#travelers">👨‍👩‍👧‍👦 Travelers</a>
+    <a href="#flights">✈️ Flights</a>
+    <a href="#day1">Day 1</a>
+    <a href="#day2">Day 2</a>
+    <a href="#day3">Day 3</a>
+    <a href="#day4">Day 4</a>
+    <a href="#day5">Day 5</a>
+    <a href="#day6">Day 6</a>
+    <a href="#day7">Day 7</a>
+    <a href="#day8">Day 8</a>
+    <a href="#day9">Day 9</a>
+    <a href="#tips">💡 Tips</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="section" id="travelers">
+  <div class="section-header">👨‍👩‍👧‍👦 Our Traveling Party</div>
+  <div class="card">
+    <div class="card-title">👥 8 Travelers · 3 Groups</div>
+    <div class="traveler-groups">
+      <div class="group-block">
+        <h4>🇨🇦 Group 1 · Katkat + Companion · Vancouver (YVR)</h4>
+        <p>LH 493 YVR→FRA · LH 1190 FRA→ZRH · LH 1183 ZRH→FRA · LH 492 FRA→YVR</p>
+      </div>
+      <div class="group-block">
+        <h4>🇨🇦 Group 2 · Irene Chan · Toronto (YYZ)</h4>
+        <p>LH 471 YYZ→FRA · LH 1190 FRA→ZRH · LH 1183 ZRH→FRA · LH 470 FRA→YYZ</p>
+      </div>
+      <div class="group-block">
+        <h4>🇺🇸 Group 3 · Mabel · Ken · Suzie · 1 Companion · San Francisco (SFO)</h4>
+        <p>LH 493 YVR→FRA · LH 1190 FRA→GVA · LH 5737 GVA→FRA · LH 454 FRA→SFO</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flights">
+  <div class="section-header">✈️ Flights</div>
+
+  <div class="card">
+    <div class="card-title">Outbound — July 16, 2026 <span class="badge">✓ CONFIRMED</span></div>
+    <table class="flight-table">
+      <thead>
+        <tr><th>Flight</th><th>Date</th><th>Route</th><th>Depart</th><th>Arrive</th><th>Group</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="flight-no">LH 493</td><td class="flight-date">16 Jul Thu</td><td>YVR → FRA</td><td>16:15</td><td>11:00+1</td><td>Vancouver</td></tr>
+        <tr><td class="flight-no">LH 471</td><td class="flight-date">16 Jul Thu</td><td>YYZ → FRA</td><td>18:20</td><td>08:00+1</td><td>Toronto</td></tr>
+        <tr><td class="flight-no">LH 493</td><td class="flight-date">16 Jul Thu</td><td>YVR → FRA</td><td>16:15</td><td>11:00+1</td><td>SF via YVR</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Into Switzerland — July 17, 2026 <span class="badge">✓ CONFIRMED</span></div>
+    <table class="flight-table">
+      <thead>
+        <tr><th>Flight</th><th>Date</th><th>Route</th><th>Depart</th><th>Arrive</th><th>Group</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="flight-no">LH 1190</td><td class="flight-date">17 Jul Fri</td><td>FRA → ZRH</td><td>13:00</td><td>13:55</td><td>Vancouver + Toronto</td></tr>
+        <tr><td class="flight-no">LH 1190</td><td class="flight-date">17 Jul Fri</td><td>FRA → GVA</td><td>13:00</td><td>13:55</td><td>SF Group</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Return — July 26, 2026 <span class="badge">✓ CONFIRMED</span></div>
+    <table class="flight-table">
+      <thead>
+        <tr><th>Flight</th><th>Date</th><th>Route</th><th>Depart</th><th>Arrive</th><th>Group</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="flight-no">LH 1183</td><td class="flight-date">26 Jul Sun</td><td>ZRH → FRA</td><td>08:15</td><td>09:20</td><td>Vancouver + Toronto</td></tr>
+        <tr><td class="flight-no">LH 5737</td><td class="flight-date">26 Jul Sun</td><td>GVA → FRA</td><td>06:55</td><td>08:05</td><td>SF Group</td></tr>
+        <tr><td class="flight-no">LH 492</td><td class="flight-date">26 Jul Sun</td><td>FRA → YVR</td><td>13:20</td><td>14:20</td><td>Vancouver</td></tr>
+        <tr><td class="flight-no">LH 470</td><td class="flight-date">26 Jul Sun</td><td>FRA → YYZ</td><td>14:00</td><td>16:20</td><td>Toronto</td></tr>
+        <tr><td class="flight-no">LH 454</td><td class="flight-date">26 Jul Sun</td><td>FRA → SFO</td><td>10:25</td><td>12:40</td><td>SF Group</td></tr>
+        <tr><td colspan="6"><span class="flight-note">⚠️ LH 454 FRA→SFO is operated by United (UA) — may incur higher cost and limited availability.</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DAY 1 -->
+<section class="section" id="day1">
+  <div class="section-header">Day 1 · July 18, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">1</div>
+      <div class="day-meta"><h3>Hometown → Zurich → Lucerne</h3><p>Saturday · Arrival Day</p></div>
+      <div class="day-badge">Transfer Only</div>
+    </div>
+    <img class="day-photo" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt="Lucerne">
+    <div class="day-body">
+      <div class="day-subroute">✈️ Zurich Airport (ZRH) → 🏨 Lucerne Hotel</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon green">✈️</div><div class="activity-text"><strong>Arrive Zurich Airport (ZRH)</strong><br><span>Pick-up based on flight arrival time</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Transfer to Lucerne</strong><br><span>Private coach · approximately 1 hour drive</span></div></li>
+        <li><div class="activity-icon gold">🏨</div><div class="activity-text"><strong>Check In — Lucerne Hotel</strong><br><span>Overnight: Lucerne or nearby town</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 2 -->
+<section class="section" id="day2">
+  <div class="section-header">Day 2 · July 19, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">2</div>
+      <div class="day-meta"><h3>Zurich → Mt. Titlis → Lucerne</h3><p>Sunday · Full Day Tour · 150 KM</p></div>
+    </div>
+    <img class="day-photo" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=80" alt="Mt Titlis">
+    <div class="day-body">
+      <div class="day-subroute">🏔️ Engelberg · Mt. Titlis Glacier (3,000m)</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Depart Lucerne → Mt. Titlis</strong><br><span>Coach journey to Engelberg valley · approx. 1.5 hours</span></div></li>
+        <li><div class="activity-icon gold">🚠</div><div class="activity-text"><strong>Mt. Titlis Summit Experience</strong><br><span>Rotair cable car to 3,000m · Cliff Walk · Glacier Cave · Snow Park</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Return to Lucerne</strong><br><span>Evening at leisure · Overnight: Lucerne</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 3 -->
+<section class="section" id="day3">
+  <div class="section-header">Day 3 · July 20, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">3</div>
+      <div class="day-meta"><h3>Lucerne → Grindelwald ~ Jungfrau → Bern</h3><p>Monday · Full Day Tour</p></div>
+    </div>
+    <img class="day-photo" src="https://images.unsplash.com/photo-1527668752968-14dc70a27c95?w=900&q=80" alt="Jungfrau">
+    <div class="day-body">
+      <div class="day-subroute">🏔️ Bernese Oberland · Grindelwald · Jungfrau Region</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Lucerne → Grindelwald</strong><br><span>Scenic coach drive through the Bernese Oberland region</span></div></li>
+        <li><div class="activity-icon gold">🏔️</div><div class="activity-text"><strong>Jungfrau Region</strong><br><span>Eiger, Mönch &amp; Jungfrau peaks · Bachalpsee lake · Alpine meadows</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Continue to Bern</strong><br><span>Evening arrival · Overnight: Bern or nearby town</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 4 -->
+<section class="section" id="day4">
+  <div class="section-header">Day 4 · July 21, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">4</div>
+      <div class="day-meta"><h3>Bern → Zweisimmen → GoldenPass → Montreux → Lausanne</h3><p>Tuesday · Scenic Train Day</p></div>
+      <div class="day-badge">🌟 Highlight</div>
+    </div>
+    <img class="day-photo" src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=900&q=80" alt="Montreux">
+    <div class="day-body">
+      <div class="day-subroute">🚂 GoldenPass Panoramic: Zweisimmen → Montreux (UNESCO route)</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Bern → Zweisimmen</strong><br><span>Coach transfer to Zweisimmen station</span></div></li>
+        <li><div class="activity-icon gold">🚂</div><div class="activity-text"><strong>GoldenPass Panoramic — Zweisimmen → Montreux</strong><br><span>Luxury panoramic train · Lake Geneva UNESCO scenery</span></div></li>
+        <li><div class="activity-icon blue">🏰</div><div class="activity-text"><strong>Montreux &amp; Chillon Castle</strong><br><span>Switzerland's most iconic castle on Lake Geneva · lakeside promenade</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Continue to Lausanne</strong><br><span>Short drive along Lake Geneva · Overnight: Lausanne</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 5 -->
+<section class="section" id="day5">
+  <div class="section-header">Day 5 · July 22, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">5</div>
+      <div class="day-meta"><h3>Lausanne → Geneva → Lausanne</h3><p>Wednesday · Day Trip</p></div>
+    </div>
+    <img class="day-photo" src="https://images.unsplash.com/photo-1543068986-c39ec1c8f24a?w=900&q=80" alt="Geneva">
+    <div class="day-body">
+      <div class="day-subroute">🏙️ Geneva — The International City</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Lausanne → Geneva</strong><br><span>Scenic drive along Lake Geneva · approx. 1 hour</span></div></li>
+        <li><div class="activity-icon gold">⛲</div><div class="activity-text"><strong>Geneva Sightseeing</strong><br><span>Jet d'eau fountain · Old Town · St. Pierre Cathedral · UN Headquarters · Lake Geneva</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Return to Lausanne</strong><br><span>Back to hotel · Overnight: Lausanne</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 6 -->
+<section class="section" id="day6">
+  <div class="section-header">Day 6 · July 23, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">6</div>
+      <div class="day-meta"><h3>Lausanne → Glacier 3000 → Brig</h3><p>Thursday · Alpine Adventure</p></div>
+    </div>
+    <img class="day-photo" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/7f/ca/96/peak-walk-by-tissot.jpg?w=900&q=80" alt="Glacier 3000">
+    <div class="day-body">
+      <div class="day-subroute">🏔️ Glacier 3000 · Les Diablerets · Valais</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Lausanne → Glacier 3000</strong><br><span>Drive to Les Diablerets · scenic mountain route</span></div></li>
+        <li><div class="activity-icon gold">🌉</div><div class="activity-text"><strong>Glacier 3000 Peak</strong><br><span>Peak Walk by Tissot suspension bridge · Alpine coaster · Glacier viewing</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Transfer to Brig</strong><br><span>Drive into the Valais region · Overnight: Brig or nearby town</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 7 -->
+<section class="section" id="day7">
+  <div class="section-header">Day 7 · July 24, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">7</div>
+      <div class="day-meta"><h3>Brig → Tram → Zermatt → Tram → Brig</h3><p>Friday · Matterhorn Day Trip</p></div>
+      <div class="day-badge">🌟 Highlight</div>
+    </div>
+    <img class="day-photo" src="https://cdn.britannica.com/93/8693-004-21FE456E/village-Zermatt-church-Switz-background-Matterhorn.jpg?w=900&q=80" alt="Zermatt">
+    <div class="day-body">
+      <div class="day-subroute">🚃 Matterhorn Gotthard Bahn · Car-free Alpine Village</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon blue">🚃</div><div class="activity-text"><strong>Brig → Zermatt (by Tram)</strong><br><span>Matterhorn Gotthard Bahn scenic railway · approx. 1.5 hours each way</span></div></li>
+        <li><div class="activity-icon gold">🏔️</div><div class="activity-text"><strong>Zermatt — The Iconic Village</strong><br><span>Matterhorn views · Bahnhofstrasse · Alpine charm · Gornergrat optional</span></div></li>
+        <li><div class="activity-icon green">🚃</div><div class="activity-text"><strong>Return to Brig</strong><br><span>Evening in Brig · Overnight: Brig or nearby town</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 8 -->
+<section class="section" id="day8">
+  <div class="section-header">Day 8 · July 25, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">8</div>
+      <div class="day-meta"><h3>Brig → Brienz → Zurich</h3><p>Saturday · Scenic Drive</p></div>
+    </div>
+    <img class="day-photo" src="https://i.ytimg.com/vi/5F36koIuzzM/maxresdefault.jpg?w=900&q=80" alt="Brienz">
+    <div class="day-body">
+      <div class="day-subroute">🏞️ Lake Brienz · Swiss Heartland</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Brig → Brienz</strong><br><span>Scenic coach drive through Swiss heartland to Lake Brienz</span></div></li>
+        <li><div class="activity-icon gold">🏞</div><div class="activity-text"><strong>Lake Brienz</strong><br><span>Switzerland's most idyllic lake · charming village · mountain backdrop</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Continue to Zurich</strong><br><span>Final evening in Switzerland · Overnight: Zurich or nearby town</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 9 -->
+<section class="section" id="day9">
+  <div class="section-header">Day 9 · July 26, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">9</div>
+      <div class="day-meta"><h3>Zurich → Hometown</h3><p>Sunday · Departure Day</p></div>
+      <div class="day-badge">Transfer Only</div>
+    </div>
+    <img class="day-photo" src="https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=900&q=80" alt="Zurich">
+    <div class="day-body">
+      <div class="day-subroute">🏨 Zurich Hotel → ✈️ Zurich Airport (ZRH)</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Check Out</strong><br><span>Hotel checkout in Zurich</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Transfer to Zurich Airport (ZRH)</strong><br><span>Private coach · drop-off at departure terminal</span></div></li>
+        <li><div class="activity-icon gold">✈️</div><div class="activity-text"><strong>Fly Home</strong><br><span>LH flights depart FRA → SFO / YVR / YYZ</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="section" id="tips">
+  <div class="section-header">💡 Good to Know</div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <h4>💰 Payments</h4>
+      <p>Swiss Franc (CHF) widely accepted. Euros also accepted near borders. Credit cards accepted in most hotels and restaurants.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🚌 Getting Around</h4>
+      <p>Coaches and trams included per itinerary. Swiss trains are punctual and scenic — GoldenPass is a must-see highlight!</p>
+    </div>
+    <div class    .tip-card">
+      <h4>📶 Internet / Wi-Fi</h4>
+      <p>Free Wi-Fi in most hotels. Consider an international data plan or Swiss SIM for constant connectivity.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🌤️ Weather — July</h4>
+      <p>Warm: 18–28°C in lowlands. Cooler in mountains: 10–20°C. Pack layers and rain gear for Alpine days.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🍽️ Meals</h4>
+      <p>Lunch and dinner not included. Swiss cuisine: fondue, raclette, rösti. Book popular restaurants in advance.</p>
+    </div>
+    <div class="tip-card">
+      <h4>💶 Tipping</h4>
+      <p>Service charge included in Switzerland. A small tip (5–10%) for exceptional service is appreciated.</p>
+    </div>
+    <div class="tip-card">
+      <h4>⚡ Electricity</h4>
+      <p>Type J plug (3-pin). Same voltage as North America (230V). Pack a universal adapter.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🗣️ Language</h4>
+      <p>Four national languages: German, French, Italian, Romansh. You'll encounter German (Zurich, Bern) and French (Geneva, Montreux).</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>✦ Tam Family Switzerland Adventure 2026 ✦</p>
+  <p>Prepared with 💚 by Jade · July 18–26, 2026</p>
+</footer>
+
+</body>
+</html>
