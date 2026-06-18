@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Switzerland Route Map · 18–26 July 2026</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fafafa; }
+
+ /* ── HEADER ── */
+ .hero {
+   background: linear-gradient(135deg, #1A237E 0%, #0D1447 60%, #1A1A2E 100%);
+   color: white;
+   text-align: center;
+   padding: 40px 20px 32px;
+   position: relative;
+   overflow: hidden;
+ }
+ .hero::before {
+   content: '';
+   position: absolute;
+   inset: 0;
+   background: url('https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1400&q=80') center/cover no-repeat;
+   opacity: 0.2;
+ }
+ .hero > * { position: relative; z-index: 1; }
+ .hero-flag { font-size: 36px; margin-bottom: 10px; }
+ .hero h1 { font-size: clamp(20px, 4vw, 32px); font-weight: 800; margin-bottom: 6px; }
+ .hero p { font-size: 14px; opacity: 0.8; color: #F9A825; }
+
+ /* ── NAV ── */
+ .nav {
+   position: sticky;
+   top: 0;
+   z-index: 100;
+   background: #fff;
+   border-bottom: 2px solid #e0e0e0;
+   box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+   overflow-x: auto;
+ }
+ .nav-inner {
+   display: flex;
+   max-width: 960px;
+   margin: 0 auto;
+   padding: 0 16px;
+ }
+ .nav a {
+   display: block;
+   padding: 12px 14px;
+   text-decoration: none;
+   color: #555;
+   font-size: 12px;
+   font-weight: 600;
+   white-space: nowrap;
+   border-bottom: 3px solid transparent;
+   transition: all 0.2s;
+ }
+ .nav a:hover { color: #D32F2F; border-bottom-color: #D32F2F; }
+ .nav a.active { color: #D32F2F; border-bottom-color: #D32F2F; }
+
+ /* ── MAP SECTION ── */
+ .map-wrap {
+   position: relative;
+ }
+ #map { height: calc(100vh - 160px); width: 100%; min-height: 500px; }
+
+ .title-bar {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: rgba(255,255,255,0.94);
+  padding: 8px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  border: 1px solid rgba(0,0,0,0.06);
+ }
+
+ .legend-panel {
+  position: absolute;
+  top: 68px;
+  right: 12px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.96);
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.14);
+  font-size: 13px;
+  line-height: 1.8;
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  min-width: 210px;
+  border: 1px solid rgba(0,0,0,0.06);
+ }
+ .legend-panel h4 { margin-bottom: 6px; font-size: 14px; color: #2c3e50; font-weight: 700; }
+ .legend-panel .item { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+ .legend-panel .num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 10px;
+  color: #fff;
+  flex-shrink: 0;
+ }
+ .legend-panel .num.red { background: #e74c3c; }
+ .legend-panel .num.blue { background: #3498db; }
+ .legend-panel .num.gray { background: #95a5a6; }
+ .legend-panel .divider { border-top: 1px solid #ddd; margin: 8px 0; }
+
+ .map-footer {
+   background: #1A237E;
+   color: rgba(255,255,255,0.7);
+   text-align: center;
+   padding: 16px 20px;
+   font-size: 13px;
+ }
+ .map-footer p:first-child { font-size: 15px; color: white; margin-bottom: 4px; font-weight: 700; }
+
+ @media (max-width: 600px) {
+  .legend-panel { top: auto; bottom: 12px; right: 6px; font-size: 11px; padding: 10px 12px; min-width: 160px; max-height: 45vh; }
+  .title-bar { font-size: 12px; padding: 6px 14px; }
+  #map { height: calc(100vh - 150px); }
+ }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hero">
+  <div class="hero-flag">🇨🇭</div>
+  <h1>Trip Route Map</h1>
+  <p>July 18–26, 2026 · 9 Days / 8 Nights</p>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html">🏠 Home</a>
+    <a href="index.html#travelers">👨‍👩‍👧‍👦 Travelers</a>
+    <a href="index.html#flights">✈️ Flights</a>
+    <a href="index.html#day1">Day 1</a>
+    <a href="index.html#day2">Day 2</a>
+    <a href="index.html#day3">Day 3</a>
+    <a href="index.html#day4">Day 4</a>
+    <a href="index.html#day5">Day 5</a>
+    <a href="index.html#day6">Day 6</a>
+    <a href="index.html#day7">Day 7</a>
+    <a href="index.html#day8">Day 8</a>
+    <a href="index.html#day9">Day 9</a>
+    <a href="#" class="active">🗺️ Route Map</a>
+  </div>
+</nav>
+
+<!-- MAP -->
+<div class="map-wrap">
+  <div id="map"></div>
+  <div class="title-bar">🇨🇭 Switzerland · 18–26 July 2026</div>
+
+  <div class="legend-panel" id="legend">
+    <h4>📍 Locations</h4>
+  </div>
+</div>
+
+<div class="map-footer">
+  <p>✦ Tam Family Switzerland Adventure 2026 ✦</p>
+  <p>Prepared with 💚 by Jade</p>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ── Unique location list (one pin each) ──
+const places = [
+ { id: 1, lat: 47.4582, lng: 8.5555, name: 'Zürich Airport (ZRH)', type: 'transfer', emoji: '✈️', days: 'Day 1 arrival, Day 9 departure' },
+ { id: 2, lat: 47.3769, lng: 8.5417, name: 'Zürich', type: 'overnight', emoji: '🏙️', days: 'Day 2 sightseeing, Day 8 overnight' },
+ { id: 3, lat: 47.0502, lng: 8.3093, name: 'Lucerne', type: 'overnight', emoji: '🏨', days: 'Day 1–2 overnight' },
+ { id: 4, lat: 46.7726, lng: 8.4369, name: 'Mt Titlis', type: 'daystop', emoji: '🏔️', days: 'Day 2' },
+ { id: 5, lat: 46.6243, lng: 8.0413, name: 'Grindelwald', type: 'daystop', emoji: '🏔️', days: 'Day 3' },
+ { id: 6, lat: 46.5369, lng: 7.9611, name: 'Jungfrau (Top of Europe)', type: 'daystop', emoji: '⛰️', days: 'Day 3' },
+ { id: 7, lat: 46.9480, lng: 7.4474, name: 'Bern', type: 'overnight', emoji: '🏨', days: 'Day 3 overnight' },
+ { id: 8, lat: 46.5531, lng: 7.3733, name: 'Zweisimmen (Golden Pass)', type: 'daystop', emoji: '🚂', days: 'Day 4' },
+ { id: 9, lat: 46.4312, lng: 6.9107, name: 'Montreux', type: 'daystop', emoji: '🌊', days: 'Day 4' },
+ { id: 10, lat: 46.5197, lng: 6.6323, name: 'Lausanne', type: 'overnight', emoji: '🏨', days: 'Day 4–5 overnight' },
+ { id: 11, lat: 46.2044, lng: 6.1432, name: 'Geneva', type: 'daystop', emoji: '🏙️', days: 'Day 5' },
+ { id: 12, lat: 46.3480, lng: 7.2038, name: 'Glacier 3000', type: 'daystop', emoji: '❄️', days: 'Day 6' },
+ { id: 13, lat: 46.3160, lng: 7.9900, name: 'Brig', type: 'overnight', emoji: '🏨', days: 'Day 6–7 overnight' },
+ { id: 14, lat: 46.0207, lng: 7.7491, name: 'Zermatt (Matterhorn)', type: 'daystop', emoji: '🏔️', days: 'Day 7' },
+ { id: 15, lat: 46.7548, lng: 8.0348, name: 'Brienz', type: 'daystop', emoji: '🌊', days: 'Day 8' },
+];
+
+// ── Route order (indices into places array) ──
+const route = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1, 0];
+// ZRH→Zürich→Lucerne→Titlis→Grindelwald→Jungfrau→Bern→Zweisimmen→Montreux→Lausanne→Geneva→Glacier3000→Brig→Zermatt→Brienz→Zürich→ZRH
+
+// ── Map init ──
+const map = L.map('map').setView([46.65, 7.85], 8);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+ attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+ maxZoom: 19
+}).addTo(map);
+
+// ── Icons ──
+const overnightIcon = (n) => L.divIcon({
+ className: '',
+ html: `<svg width="32" height="32" viewBox="0 0 32 32">
+  <circle cx="16" cy="16" r="14" fill="#e74c3c" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="16" y="17" text-anchor="middle" fill="#fff" font-weight="700" font-size="13" font-family="sans-serif">${n}</text>
+ </svg>`,
+ iconSize: [32, 32], iconAnchor: [16, 16], popupAnchor: [0, -16]
+});
+const daystopIcon = (n) => L.divIcon({
+ className: '',
+ html: `<svg width="28" height="28" viewBox="0 0 28 28">
+  <circle cx="14" cy="14" r="12" fill="#3498db" stroke="#2471a3" stroke-width="2"/>
+  <text x="14" y="15" text-anchor="middle" fill="#fff" font-weight="700" font-size="11" font-family="sans-serif">${n}</text>
+ </svg>`,
+ iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14]
+});
+const transferIcon = (n) => L.divIcon({
+ className: '',
+ html: `<svg width="28" height="28" viewBox="0 0 28 28">
+  <circle cx="14" cy="14" r="12" fill="#95a5a6" stroke="#7f8c8d" stroke-width="2"/>
+  <text x="14" y="15" text-anchor="middle" fill="#fff" font-weight="700" font-size="11" font-family="sans-serif">${n}</text>
+ </svg>`,
+ iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14]
+});
+
+// ── Place markers ──
+places.forEach(p => {
+ const icon = p.type === 'overnight' ? overnightIcon(p.id)
+   : p.type === 'transfer' ? transferIcon(p.id)
+   : daystopIcon(p.id);
+
+ L.marker([p.lat, p.lng], { icon })
+  .bindPopup(`<b>${p.emoji} ${p.id}. ${p.name}</b><br>${p.days}`)
+  .addTo(map);
+});
+
+// ── Draw route line ──
+const routeCoords = route.map(i => [places[i].lat, places[i].lng]);
+L.polyline(routeCoords, {
+ color: '#e74c3c', weight: 3.5, opacity: 0.75,
+}).addTo(map);
+
+// ── Build legend ──
+const legendEl = document.getElementById('legend');
+let legendHTML = `
+ <div class="item"><span class="num red">🔴</span> <b>Overnight</b></div>
+ <div class="item"><span class="num blue">🔵</span> <b>Sightseeing</b></div>
+ <div class="item"><span class="num gray">⚪</span> <b>Transfer</b></div>
+ <div class="divider"></div>
+`;
+places.forEach(p => {
+ const cls = p.type === 'overnight' ? 'red' : p.type === 'transfer' ? 'gray' : 'blue';
+ legendHTML += `<div class="item"><span class="num ${cls}">${p.id}</span> ${p.emoji} ${p.name}</div>`;
+});
+legendEl.innerHTML = legendHTML;
+
+// ── Fit bounds ──
+const allCoords = places.map(p => [p.lat, p.lng]);
+map.fitBounds(L.latLngBounds(allCoords), { padding: [50, 50] });
+</script>
+</body>
+</html>
