@@ -17,6 +17,8 @@
       --border: #E0E0E0;
       --tag-green: #2E7D32;
       --tag-green-bg: #E8F5E9;
+      --tag-blue-bg: #E3F2FD;
+      --tag-blue: #1565C0;
       --radius: 12px;
       --shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
@@ -54,6 +56,7 @@
     .card-title { font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 
     .badge { display: inline-flex; align-items: center; gap: 4px; background: var(--tag-green-bg); color: var(--tag-green); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .badge.blue { background: var(--tag-blue-bg); color: var(--tag-blue); }
 
     .traveler-groups { display: flex; flex-direction: column; gap: 12px; }
     .group-block { background: var(--off-white); border-radius: var(--radius); padding: 14px 18px; border-left: 4px solid var(--red); }
@@ -79,15 +82,19 @@
     .day-meta h3 { font-size: 17px; font-weight: 700; }
     .day-meta p { font-size: 12px; opacity: 0.8; margin-top: 1px; }
     .day-badge { font-size: 11px; background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 20px; }
+    .day-badge.highlight { background: rgba(249,168,37,0.3); color: var(--gold); }
+    .day-badge.flight { background: rgba(33,33,33,0.4); }
     .day-photo { width: 100%; height: 230px; object-fit: cover; display: block; }
     .day-body { padding: 20px 24px; }
     .day-subroute { font-size: 13px; color: var(--mid); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+    .hotel-tag { display: inline-flex; align-items: center; gap: 4px; background: var(--tag-blue-bg); color: var(--tag-blue); font-size: 11px; font-weight: 600; padding: 2px 10px; border-radius: 20px; margin-left: 8px; }
     .activity-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .activity-list li { display: flex; gap: 12px; font-size: 14px; line-height: 1.5; }
     .activity-icon { width: 30px; height: 30px; border-radius: 50%; background: var(--red); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; margin-top: 2px; }
     .activity-icon.blue { background: var(--navy); }
     .activity-icon.gold { background: var(--gold); color: var(--dark); }
     .activity-icon.green { background: #2E7D32; }
+    .activity-icon.purple { background: #6A1B9A; }
     .activity-text strong { color: var(--dark); }
     .activity-text span { color: var(--mid); font-size: 13px; }
 
@@ -119,7 +126,7 @@
 <header class="hero">
   <div class="hero-flag">🇨🇭</div>
   <h1>Switzerland Adventure 2026</h1>
-  <h2>July 18 – 26, 2026 · 9 Days / 8 Nights</h2>
+  <h2>July 16 – 25, 2026 · 10 Days / 9 Nights</h2>
   <div class="hero-routing">
     <span>🏠 YVR / YYZ</span>
     <span>✈️</span>
@@ -127,7 +134,7 @@
     <span>✈️</span>
     <span>🏠 Home</span>
   </div>
-  <p class="hero-sub">Zurich · Lucerne · Bernese Oberland · Montreux · Zermatt · Geneva</p>
+  <p class="hero-sub">Zurich · Lucerne · Interlaken · Montreux · Geneva · Zermatt · St. Moritz · Tirano (Italy)</p>
 </header>
 
 <nav class="nav">
@@ -143,6 +150,7 @@
     <a href="#day7">Day 7</a>
     <a href="#day8">Day 8</a>
     <a href="#day9">Day 9</a>
+    <a href="#day10">Day 10</a>
     <a href="route.html">🗺️ Route Map</a>
     <a href="#tips">💡 Tips</a>
   </div>
@@ -163,7 +171,6 @@
         <h4>🇨🇦 Group 2 · Irene Chan · Toronto (YYZ)</h4>
         <p>LH 471 YYZ→FRA · LH 1190 FRA→ZRH · LH 1183 ZRH→FRA · LH 470 FRA→YYZ</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -180,7 +187,7 @@
       <tbody>
         <tr><td class="flight-no">LH 493</td><td class="flight-date">16 Jul Thu</td><td>YVR → FRA</td><td>16:15</td><td>11:00+1</td><td>Vancouver</td></tr>
         <tr><td class="flight-no">LH 471</td><td class="flight-date">16 Jul Thu</td><td>YYZ → FRA</td><td>18:20</td><td>08:00+1</td><td>Toronto</td></tr>
-              </tbody>
+      </tbody>
     </table>
   </div>
 
@@ -192,41 +199,41 @@
       </thead>
       <tbody>
         <tr><td class="flight-no">LH 1190</td><td class="flight-date">17 Jul Fri</td><td>FRA → ZRH</td><td>13:00</td><td>13:55</td><td>Vancouver + Toronto</td></tr>
-              </tbody>
+      </tbody>
     </table>
   </div>
 
   <div class="card">
-    <div class="card-title">Return — July 26, 2026 <span class="badge">✓ CONFIRMED</span></div>
+    <div class="card-title">Return — July 25, 2026 <span class="badge">✓ CONFIRMED</span></div>
     <table class="flight-table">
       <thead>
         <tr><th>Flight</th><th>Date</th><th>Route</th><th>Depart</th><th>Arrive</th><th>Group</th></tr>
       </thead>
       <tbody>
-        <tr><td class="flight-no">LH 1183</td><td class="flight-date">26 Jul Sun</td><td>ZRH → FRA</td><td>08:15</td><td>09:20</td><td>Vancouver + Toronto</td></tr>
-                <tr><td class="flight-no">LH 492</td><td class="flight-date">26 Jul Sun</td><td>FRA → YVR</td><td>13:20</td><td>14:20</td><td>Vancouver</td></tr>
-        <tr><td class="flight-no">LH 470</td><td class="flight-date">26 Jul Sun</td><td>FRA → YYZ</td><td>14:00</td><td>16:20</td><td>Toronto</td></tr>
-                      </tbody>
+        <tr><td class="flight-no">LH 1183</td><td class="flight-date">25 Jul Sat</td><td>ZRH → FRA</td><td>08:15</td><td>09:20</td><td>Vancouver + Toronto</td></tr>
+        <tr><td class="flight-no">LH 492</td><td class="flight-date">25 Jul Sat</td><td>FRA → YVR</td><td>13:20</td><td>14:20</td><td>Vancouver</td></tr>
+        <tr><td class="flight-no">LH 470</td><td class="flight-date">25 Jul Sat</td><td>FRA → YYZ</td><td>14:00</td><td>16:20</td><td>Toronto</td></tr>
+      </tbody>
     </table>
   </div>
 </section>
 
 <!-- DAY 1 -->
 <section class="section" id="day1">
-  <div class="section-header">Day 1 · July 18, 2026</div>
+  <div class="section-header">Day 1 · July 16, 2026</div>
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">1</div>
-      <div class="day-meta"><h3>Hometown → Zurich → Lucerne</h3><p>Saturday · Arrival Day</p></div>
-      <div class="day-badge">Transfer Only</div>
+      <div class="day-meta"><h3>YVR / YYZ → Frankfurt</h3><p>Thursday · Departure Day</p></div>
+      <div class="day-badge flight">✈️ Flying</div>
     </div>
-    <img class="day-photo" src="imgs/day1-lucerne.jpg" alt="Lucerne">
+    <img class="day-photo" src="imgs/day1-lucerne.jpg" alt="Flying to Europe">
     <div class="day-body">
-      <div class="day-subroute">✈️ Zurich Airport (ZRH) → 🏨 Lucerne Hotel</div>
+      <div class="day-subroute">🏠 Depart Home · ✈️ Frankfurt Airport (FRA)</div>
       <ul class="activity-list">
-        <li><div class="activity-icon green">✈️</div><div class="activity-text"><strong>Arrive Zurich Airport (ZRH)</strong><br><span>Pick-up based on flight arrival time</span></div></li>
-        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Transfer to Lucerne</strong><br><span>Private coach · approximately 1 hour drive</span></div></li>
-        <li><div class="activity-icon gold">🏨</div><div class="activity-text"><strong>Check In — Lucerne Hotel</strong><br><span>Overnight: Lucerne or nearby town</span></div></li>
+        <li><div class="activity-icon gold">🛫</div><div class="activity-text"><strong>Group 1 — Vancouver (YVR)</strong><br><span>Lufthansa LH 493 · Departs 16:15 · Arrives FRA 11:00+1 day</span></div></li>
+        <li><div class="activity-icon gold">🛫</div><div class="activity-text"><strong>Group 2 — Toronto (YYZ)</strong><br><span>Lufthansa LH 471 · Departs 18:20 · Arrives FRA 08:00+1 day</span></div></li>
+        <li><div class="activity-icon blue">🌙</div><div class="activity-text"><strong>Overnight</strong><br><span>In-flight · both groups arrive in Frankfurt on Day 2 morning</span></div></li>
       </ul>
     </div>
   </div>
@@ -234,19 +241,22 @@
 
 <!-- DAY 2 -->
 <section class="section" id="day2">
-  <div class="section-header">Day 2 · July 19, 2026</div>
+  <div class="section-header">Day 2 · July 17, 2026</div>
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">2</div>
-      <div class="day-meta"><h3>Zurich → Mt. Titlis → Lucerne</h3><p>Sunday · Full Day Tour · 150 KM</p></div>
+      <div class="day-meta"><h3>Frankfurt → Zurich → Lucerne</h3><p>Friday · Arrival Day</p></div>
+      <div class="day-badge">New</div>
     </div>
-    <img class="day-photo" src="imgs/day2-titlis.jpg" alt="Mt Titlis">
+    <img class="day-photo" src="imgs/day2-titlis.jpg" alt="Lucerne">
     <div class="day-body">
-      <div class="day-subroute">🏔️ Engelberg · Mt. Titlis Glacier (3,000m)</div>
+      <div class="day-subroute">✈️ FRA → ZRH · 🚌 ZRH → Lucerne</div>
       <ul class="activity-list">
-        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Depart Lucerne → Mt. Titlis</strong><br><span>Coach journey to Engelberg valley · approx. 1.5 hours</span></div></li>
-        <li><div class="activity-icon gold">🚠</div><div class="activity-text"><strong>Mt. Titlis Summit Experience</strong><br><span>Rotair cable car to 3,000m · Cliff Walk · Glacier Cave · Snow Park</span></div></li>
-        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Return to Lucerne</strong><br><span>Evening at leisure · Overnight: Lucerne</span></div></li>
+        <li><div class="activity-icon gold">🛬</div><div class="activity-text"><strong>Arrive Frankfurt (FRA)</strong><br><span>LH 493 arrives 11:00 · LH 471 arrives 08:00 · groups meet at FRA</span></div></li>
+        <li><div class="activity-icon blue">🛫</div><div class="activity-text"><strong>Connect to Zurich (ZRH)</strong><br><span>Lufthansa LH 1190 · Departs 13:00 · Arrives ZRH 13:55 · both groups together</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Transfer to Lucerne</strong><br><span>Private coach · approx. 1 hour from Zurich airport</span></div></li>
+        <li><div class="activity-icon gold">🚶</div><div class="activity-text"><strong>Walking Tour — Lucerne Old Town</strong><br><span>Chapel Bridge · Spreuerbrücke · Lion Monument · Lakeside promenade</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Overnight — Lucerne</strong><br><span>Hotel Schlüssel or similar</span></div></li>
       </ul>
     </div>
   </div>
@@ -254,19 +264,21 @@
 
 <!-- DAY 3 -->
 <section class="section" id="day3">
-  <div class="section-header">Day 3 · July 20, 2026</div>
+  <div class="section-header">Day 3 · July 18, 2026</div>
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">3</div>
-      <div class="day-meta"><h3>Lucerne → Grindelwald ~ Jungfrau → Bern</h3><p>Monday · Full Day Tour</p></div>
+      <div class="day-meta"><h3>Lucerne → Mt. Titlis → Zurich</h3><p>Saturday · Full Day Tour</p></div>
+      <div class="day-badge highlight">🌟 Highlight</div>
     </div>
-    <img class="day-photo" src="imgs/day3-jungfrau.jpg" alt="Jungfrau">
+    <img class="day-photo" src="imgs/day2-titlis.jpg" alt="Mt. Titlis">
     <div class="day-body">
-      <div class="day-subroute">🏔️ Bernese Oberland · Grindelwald · Jungfrau Region</div>
+      <div class="day-subroute">🏔️ Engelberg · Mt. Titlis Glacier (3,000m)</div>
       <ul class="activity-list">
-        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Lucerne → Grindelwald</strong><br><span>Scenic coach drive through the Bernese Oberland region</span></div></li>
-        <li><div class="activity-icon gold">🏔️</div><div class="activity-text"><strong>Jungfrau Region</strong><br><span>Eiger, Mönch &amp; Jungfrau peaks · Bachalpsee lake · Alpine meadows</span></div></li>
-        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Continue to Bern</strong><br><span>Evening arrival · Overnight: Bern or nearby town</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Lucerne → Engelberg</strong><br><span>Coach journey through Swiss countryside · approx. 1.5 hours</span></div></li>
+        <li><div class="activity-icon gold">🚠</div><div class="activity-text"><strong>Mt. Titlis — Summit Experience</strong><br><span>Rotair cable car to 3,000m · Cliff Walk (Europe's highest suspension bridge) · Glacier Cave · Snow Park</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Return to Zurich</strong><br><span>Coach back to Zurich · scenic drive</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Overnight — Zurich</strong><br><span>Bauschänzlie or similar</span></div></li>
       </ul>
     </div>
   </div>
@@ -274,21 +286,20 @@
 
 <!-- DAY 4 -->
 <section class="section" id="day4">
-  <div class="section-header">Day 4 · July 21, 2026</div>
+  <div class="section-header">Day 4 · July 19, 2026</div>
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">4</div>
-      <div class="day-meta"><h3>Bern → Zweisimmen → GoldenPass → Montreux → Lausanne</h3><p>Tuesday · Scenic Train Day</p></div>
-      <div class="day-badge">🌟 Highlight</div>
+      <div class="day-meta"><h3>Zurich → Jungfraujoch → Interlaken</h3><p>Sunday · Top of Europe</p></div>
+      <div class="day-badge highlight">🌟 Highlight</div>
     </div>
-    <img class="day-photo" src="imgs/day4-montreux.jpg" alt="Montreux">
+    <img class="day-photo" src="imgs/day3-jungfrau.jpg" alt="Jungfraujoch">
     <div class="day-body">
-      <div class="day-subroute">🚂 GoldenPass Panoramic: Zweisimmen → Montreux (UNESCO route)</div>
+      <div class="day-subroute">🏔️ Jungfraujoch — "Top of Europe" (3,454m)</div>
       <ul class="activity-list">
-        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Bern → Zweisimmen</strong><br><span>Coach transfer to Zweisimmen station</span></div></li>
-        <li><div class="activity-icon gold">🚂</div><div class="activity-text"><strong>GoldenPass Panoramic — Zweisimmen → Montreux</strong><br><span>Luxury panoramic train · Lake Geneva UNESCO scenery</span></div></li>
-        <li><div class="activity-icon blue">🏰</div><div class="activity-text"><strong>Montreux &amp; Chillon Castle</strong><br><span>Switzerland's most iconic castle on Lake Geneva · lakeside promenade</span></div></li>
-        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Continue to Lausanne</strong><br><span>Short drive along Lake Geneva · Overnight: Lausanne</span></div></li>
+        <li><div class="activity-icon blue">🚃</div><div class="activity-text"><strong>Zurich → Luzern → Interlaken</strong><br><span>Scenic rail via Luzern · beautiful lake and mountain views</span></div></li>
+        <li><div class="activity-icon gold">🏔️</div><div class="activity-text"><strong>Jungfraujoch — Top of Europe</strong><br><span>Wengernalp Railway from Grindelwald to Kleine Scheidegg · views of Eiger, Mönch &amp; Jungfrau peaks · Sphinx Observatory · Alpine snow platform</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Overnight — Interlaken</strong><br><span>Hotel Seestal or similar · heart of the Bernese Oberland</span></div></li>
       </ul>
     </div>
   </div>
@@ -296,19 +307,21 @@
 
 <!-- DAY 5 -->
 <section class="section" id="day5">
-  <div class="section-header">Day 5 · July 22, 2026</div>
+  <div class="section-header">Day 5 · July 20, 2026</div>
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">5</div>
-      <div class="day-meta"><h3>Lausanne → Geneva → Lausanne</h3><p>Wednesday · Day Trip</p></div>
+      <div class="day-meta"><h3>Interlaken → Zweisimmen → Montreux → Lausanne</h3><p>Monday · GoldenPass Scenic Train</p></div>
+      <div class="day-badge highlight">🌟 Highlight</div>
     </div>
-    <img class="day-photo" src="imgs/day5-geneva.jpg" alt="Geneva">
+    <img class="day-photo" src="imgs/day4-montreux.jpg" alt="Montreux">
     <div class="day-body">
-      <div class="day-subroute">🏙️ Geneva — The International City</div>
+      <div class="day-subroute">🚂 GoldenPass Panoramic: Zweisimmen → Montreux (UNESCO route)</div>
       <ul class="activity-list">
-        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Lausanne → Geneva</strong><br><span>Scenic drive along Lake Geneva · approx. 1 hour</span></div></li>
-        <li><div class="activity-icon gold">⛲</div><div class="activity-text"><strong>Geneva Sightseeing</strong><br><span>Jet d'eau fountain · Old Town · St. Pierre Cathedral · UN Headquarters · Lake Geneva</span></div></li>
-        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Return to Lausanne</strong><br><span>Back to hotel · Overnight: Lausanne</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Interlaken → Zweisimmen</strong><br><span>Coach transfer to Zweisimmen station</span></div></li>
+        <li><div class="activity-icon gold">🚂</div><div class="activity-text"><strong>GoldenPass Panoramic — Zweisimmen → Montreux</strong><br><span>Luxury panoramic train · Lake Geneva UNESCO World Heritage scenery</span></div></li>
+        <li><div class="activity-icon blue">🏰</div><div class="activity-text"><strong>Montreux &amp; Chillon Castle</strong><br><span>Switzerland's most iconic castle on Lake Geneva · lakeside promenade</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Overnight — Lausanne</strong><br><span>Swiss lakeside city · Olympic capital</span></div></li>
       </ul>
     </div>
   </div>
@@ -316,19 +329,21 @@
 
 <!-- DAY 6 -->
 <section class="section" id="day6">
-  <div class="section-header">Day 6 · July 23, 2026</div>
+  <div class="section-header">Day 6 · July 21, 2026</div>
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">6</div>
-      <div class="day-meta"><h3>Lausanne → Glacier 3000 → Brig</h3><p>Thursday · Alpine Adventure</p></div>
+      <div class="day-meta"><h3>Lausanne → Chamonix → Geneva</h3><p>Tuesday · France Day Trip · Mont Blanc</p></div>
+      <div class="day-badge highlight">🌟 Highlight</div>
     </div>
-    <img class="day-photo" src="imgs/day6-glacier3000.jpg" alt="Glacier 3000">
+    <img class="day-photo" src="imgs/day5-geneva.jpg" alt="Chamonix Mont Blanc">
     <div class="day-body">
-      <div class="day-subroute">🏔️ Glacier 3000 · Les Diablerets · Valais</div>
+      <div class="day-subroute">🇫🇷 Chamonix, France · Aiguille du Midi (3,840m)</div>
       <ul class="activity-list">
-        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Lausanne → Glacier 3000</strong><br><span>Drive to Les Diablerets · scenic mountain route</span></div></li>
-        <li><div class="activity-icon gold">🌉</div><div class="activity-text"><strong>Glacier 3000 Peak</strong><br><span>Peak Walk by Tissot suspension bridge · Alpine coaster · Glacier viewing</span></div></li>
-        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Transfer to Brig</strong><br><span>Drive into the Valais region · Overnight: Brig or nearby town</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Lausanne → Chamonix</strong><br><span>Private coach crossing into France · approx. 2.5 hours · stunning Alpine views</span></div></li>
+        <li><div class="activity-icon gold">🚡</div><div class="activity-text"><strong>Aiguille du Midi — Mont Blanc Cable Car</strong><br><span>World's most famous cable car · ascends to 3,842m · breathtaking 360° Mont Blanc summit views · Step into the Void glass box</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Chamonix Town &amp; Return</strong><br><span>Explore charming Alpine town · drive back to Geneva</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Overnight — Geneva</strong><br><span>Hotel or similar · Switzerland's international city</span></div></li>
       </ul>
     </div>
   </div>
@@ -336,20 +351,21 @@
 
 <!-- DAY 7 -->
 <section class="section" id="day7">
-  <div class="section-header">Day 7 · July 24, 2026</div>
+  <div class="section-header">Day 7 · July 22, 2026</div>
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">7</div>
-      <div class="day-meta"><h3>Brig → Tram → Zermatt → Tram → Brig</h3><p>Friday · Matterhorn Day Trip</p></div>
-      <div class="day-badge">🌟 Highlight</div>
+      <div class="day-meta"><h3>Geneva → Glacier Express → Zermatt</h3><p>Wednesday · Glacier Express Panoramic</p></div>
+      <div class="day-badge highlight">🌟 Highlight</div>
     </div>
-    <img class="day-photo" src="imgs/day7-zermatt.jpg" alt="Zermatt">
+    <img class="day-photo" src="imgs/day7-zermatt.jpg" alt="Glacier Express">
     <div class="day-body">
-      <div class="day-subroute">🚃 Matterhorn Gotthard Bahn · Car-free Alpine Village</div>
+      <div class="day-subroute">🚂 Glacier Express — Most spectacular Alpine crossing · 8 hours · 291 bridges</div>
       <ul class="activity-list">
-        <li><div class="activity-icon blue">🚃</div><div class="activity-text"><strong>Brig → Zermatt (by Tram)</strong><br><span>Matterhorn Gotthard Bahn scenic railway · approx. 1.5 hours each way</span></div></li>
-        <li><div class="activity-icon gold">🏔️</div><div class="activity-text"><strong>Zermatt — The Iconic Village</strong><br><span>Matterhorn views · Bahnhofstrasse · Alpine charm · Gornergrat optional</span></div></li>
-        <li><div class="activity-icon green">🚃</div><div class="activity-text"><strong>Return to Brig</strong><br><span>Evening in Brig · Overnight: Brig or nearby town</span></div></li>
+        <li><div class="activity-icon blue">🚃</div><div class="activity-text"><strong>Geneva → Disentis (by rail)</strong><br><span>Morning departure from Geneva · scenic rail journey to Disentis</span></div></li>
+        <li><div class="activity-icon gold">🚂</div><div class="activity-text"><strong>Glacier Express — Disentis → Zermatt</strong><br><span>Panoramic coach/rail from Disentis · Oberalp Pass · Rhine Gorge · Matterhorn views</span></div></li>
+        <li><div class="activity-icon blue">🏔️</div><div class="activity-text"><strong>Zermatt Evening</strong><br><span>Car-free Alpine village · Matterhorn views · Bahnhofstrasse · atmosphere</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Overnight — Zermatt</strong><br><span>Hotel or similar · the iconic Matterhorn village</span></div></li>
       </ul>
     </div>
   </div>
@@ -357,19 +373,20 @@
 
 <!-- DAY 8 -->
 <section class="section" id="day8">
-  <div class="section-header">Day 8 · July 25, 2026</div>
+  <div class="section-header">Day 8 · July 23, 2026</div>
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">8</div>
-      <div class="day-meta"><h3>Brig → Brienz → Zurich</h3><p>Saturday · Scenic Drive</p></div>
+      <div class="day-meta"><h3>Zermatt → St. Moritz</h3><p>Thursday · Bernina Express Day</p></div>
+      <div class="day-badge highlight">🌟 Highlight</div>
     </div>
-    <img class="day-photo" src="imgs/day8-brienz.jpg" alt="Brienz">
+    <img class="day-photo" src="imgs/day8-brienz.jpg" alt="Bernina Express">
     <div class="day-body">
-      <div class="day-subroute">🏞️ Lake Brienz · Swiss Heartland</div>
+      <div class="day-subroute">🚂 Bernina Express · St. Moritz · Albula/Bernina UNESCO line</div>
       <ul class="activity-list">
-        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Brig → Brienz</strong><br><span>Scenic coach drive through Swiss heartland to Lake Brienz</span></div></li>
-        <li><div class="activity-icon gold">🏞</div><div class="activity-text"><strong>Lake Brienz</strong><br><span>Switzerland's most idyllic lake · charming village · mountain backdrop</span></div></li>
-        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Continue to Zurich</strong><br><span>Final evening in Switzerland · Overnight: Zurich or nearby town</span></div></li>
+        <li><div class="activity-icon gold">🚂</div><div class="activity-text"><strong>Zermatt → St. Moritz (Bernina Express)</strong><br><span>Scenic panoramic route · crossing the Swiss-Italian Alps · Landwasser Viaduct · Morteratsch Glacier views</span></div></li>
+        <li><div        <li><div class="activity-icon blue">🏞️</div><div class="activity-text"><strong>St. Moritz — Explore the Village</strong><br><span>Engadin valley · Lake St. Moritz · elegant Alpine resort atmosphere</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Overnight — St. Moritz</strong><br><span>Hotel or similar · Upper Engadin luxury resort</span></div></li>
       </ul>
     </div>
   </div>
@@ -377,20 +394,43 @@
 
 <!-- DAY 9 -->
 <section class="section" id="day9">
-  <div class="section-header">Day 9 · July 26, 2026</div>
+  <div class="section-header">Day 9 · July 24, 2026</div>
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">9</div>
-      <div class="day-meta"><h3>Zurich → Hometown</h3><p>Sunday · Departure Day</p></div>
+      <div class="day-meta"><h3>St. Moritz → Tirano (Italy) → St. Moritz</h3><p>Friday · Bernina Express Bus</p></div>
+      <div class="day-badge highlight">🌟 Highlight</div>
+    </div>
+    <img class="day-photo" src="imgs/day9-zurich.jpg" alt="Bernina Express">
+    <div class="day-body">
+      <div class="day-subroute">🇮🇹 Bernina Express Bus · Albula/Bernina UNESCO · Tirano Italy</div>
+      <ul class="activity-list">
+        <li><div class="activity-icon gold">🚌</div><div class="activity-text"><strong>St. Moritz → Tirano, Italy (Bernina Express Bus)</strong><br><span>Scenic bus crossing the Swiss-Italian border · Ospizio Bernina · Val Poschiavo · charming Italian alpine town</span></div></li>
+        <li><div class="activity-icon blue">🇮🇹</div><div class="activity-text"><strong>Tirano — Free Time</strong><br><span>Italian lakeside town · Piazza della Stazione · local lunch · Piazza Taddeo Maffei</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Return to St. Moritz</strong><br><span>Scenic return journey through the Alps</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Overnight — St. Moritz</strong><br><span>Final evening in the Alps · farewell dinner</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 10 -->
+<section class="section" id="day10">
+  <div class="section-header">Day 10 · July 25, 2026</div>
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">10</div>
+      <div class="day-meta"><h3>St. Moritz → Zurich → Home</h3><p>Saturday · Departure Day</p></div>
       <div class="day-badge">Transfer Only</div>
     </div>
-    <img class="day-photo" src="imgs/day9-zurich.jpg" alt="Zurich">
+    <img class="day-photo" src="imgs/day1-lucerne.jpg" alt="Zurich Airport">
     <div class="day-body">
-      <div class="day-subroute">🏨 Zurich Hotel → ✈️ Zurich Airport (ZRH)</div>
+      <div class="day-subroute">🏨 St. Moritz Hotel → 🚌 Zurich Airport (ZRH) → 🏠 Home</div>
       <ul class="activity-list">
-        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Check Out</strong><br><span>Hotel checkout in Zurich</span></div></li>
-        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Transfer to Zurich Airport (ZRH)</strong><br><span>Private coach · drop-off at departure terminal</span></div></li>
-        <li><div class="activity-icon gold">✈️</div><div class="activity-text"><strong>Fly Home</strong><br><span>LH flights depart FRA → SFO / YVR / YYZ</span></div></li>
+        <li><div class="activity-icon green">🏨</div><div class="activity-text"><strong>Check Out — St. Moritz</strong><br><span>Hotel checkout · final morning in the Alps</span></div></li>
+        <li><div class="activity-icon blue">🚌</div><div class="activity-text"><strong>Transfer to Zurich Airport (ZRH)</strong><br><span>Private coach · scenic drive from St. Moritz to Zurich</span></div></li>
+        <li><div class="activity-icon gold">✈️</div><div class="activity-text"><strong>Depart Zurich — Fly Home</strong><br><span>Lufthansa LH 1183 · Departs ZRH 08:15 · Both groups together</span></div></li>
+        <li><div class="activity-icon blue">🏠</div><div class="activity-text"><strong>Arrive Home</strong><br><span>LH 492 arrives YVR 14:20 · LH 470 arrives YYZ 16:20 · Vancouver &amp; Toronto groups</span></div></li>
       </ul>
     </div>
   </div>
@@ -406,9 +446,9 @@
     </div>
     <div class="tip-card">
       <h4>🚌 Getting Around</h4>
-      <p>Coaches and trams included per itinerary. Swiss trains are punctual and scenic — GoldenPass is a must-see highlight!</p>
+      <p>Coaches and scenic trains (GoldenPass, Glacier Express, Bernina Express) included per itinerary. Swiss trains are punctual and scenic — all are highlights!</p>
     </div>
-    <div class    .tip-card">
+    <div class="tip-card">
       <h4>📶 Internet / Wi-Fi</h4>
       <p>Free Wi-Fi in most hotels. Consider an international data plan or Swiss SIM for constant connectivity.</p>
     </div>
@@ -430,7 +470,15 @@
     </div>
     <div class="tip-card">
       <h4>🗣️ Language</h4>
-      <p>Four national languages: German, French, Italian, Romansh. You'll encounter German (Zurich, Bern) and French (Geneva, Montreux).</p>
+      <p>Four national languages: German, French, Italian, Romansh. You'll encounter German (Zurich, Bern), French (Geneva, Montreux), and Italian (Tirano).</p>
+    </div>
+    <div class="tip-card">
+      <h4>🇫🇷 Chamonix Day Trip</h4>
+      <p>Remember your passport for the France border crossing! A valid passport is required on Day 6.</p>
+    </div>
+    <div class="tip-card">
+      <h4>🎿 Scenic Trains</h4>
+      <p>Glacier Express and Bernina Express are panoramic — book window seats in advance. Cameras recommended!</p>
     </div>
   </div>
 </section>
@@ -439,7 +487,7 @@
 
 <footer>
   <p>✦ Switzerland Adventure 2026 ✦</p>
-  <p>Prepared with 💚 by Jade · July 18–26, 2026</p>
+  <p>Prepared with 💚 by Jade · July 16–25, 2026</p>
 </footer>
 
 </body>
